@@ -59,5 +59,5 @@ void printbuff(char buff[], int *buff_index)
 {
 	if (*buff_index > 0)
 		write(1, &buff[0], *buff_index);
-	*buffer_index = 0;
+	*buff_index = 0;
 }
