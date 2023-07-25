@@ -8,8 +8,8 @@
 
 #define NOTUSED(x) (void)(x)
 
-#define FADD 1
-#define FSUB 2
+#define FSUB 1
+#define FADD 2
 #define FZERO 4
 #define FHASH 8
 #define FSPACE 16
@@ -18,25 +18,25 @@
 #define SHORT 1
 
 /**
- * struct format - struct
- * @format: format
+ * struct ft - struct
+ * @ft: format
  * @func: function
  */
-struct format
+struct ft
 {
-    char format;
+    char ft;
     int (*func)(va_list, char[], int, int, int, int);
 };
 
 /**
- * typedef struct format format_t - struct
- * @format: format
- * @format_t: function
+ * typedef struct ft ft_t - struct
+ * @ft: format
+ * @ft_t: function
  */
-typedef struct format format_t;
+typedef struct format ft_t;
 
 int _printf(const char *format, ...);
-int handler(const char *fmt, int *i,
+int handler(const char *ft, int *i,
 va_list list, char buff[], int flags, int width, int precision, int size);
 
 int p_char(va_list types, char buff[],

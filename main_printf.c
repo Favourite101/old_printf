@@ -10,7 +10,7 @@ void printbuff(char buff[], int *buff_index);
  */
 int _printf(const char *format, ...)
 {
-	va_list input;
+	va_list list;
 	int i, count, printedd = 0, precision, size, flags, width, index = 0;
 	char buff[SIZE];
 
@@ -18,18 +18,18 @@ int _printf(const char *format, ...)
 	{
 		return (-1);
 	}
-	va_start(input, format);
+	va_start(list, format);
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
 			printbuff(buff, &buff_index);
-			precision = precision(format, &i, input);
+			precision = precision(format, &i, list);
 			size = size(format, &i);
 			flags = flags(format, &i);
-			width = width(format, &i, input);
+			width = width(format, &i, list);
 			i++;
-			count = handler(format, &i, input, buff, flags, width, precision, size);
+			count = handler(format, &i, list, buff, flags, width, precision, size);
 			if (count == -1)
 				return (-1);
 			printedd += count;
@@ -43,7 +43,7 @@ int _printf(const char *format, ...)
 		}
 	}
 	printbuff(buff, &buff_index);
-	va_end(input);
+	va_end(list);
 
 	return (printedd);
 }
