@@ -12,7 +12,7 @@
  * Return: Number of chars printed.
  */
 int handler_char(char c, char buff[],
-    int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	int i = 0;
 	char padd = ' ';
@@ -52,25 +52,23 @@ int handler_char(char c, char buff[],
  * Return: Number of chars printed.
  */
 int w_numb(int is_negative, int ind, char buff[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	int length = SIZE - ind - 1;
 	char padd = ' ', extra_ch = 0;
 
 	NOTUSED(size);
-    if ((flags & FZERO) && !(flags & FSUB))
-    {
-        padd = '0';
-    }
-    if (is_negative)
-        extra_ch = '-';
-    else if (flags & FADD)
-	    extra_ch = '+';
-    else if (flags & FSPACE)
-	    extra_ch = ' ';
+	if ((flags & FZERO) && !(flags & FSUB))
+		padd = '0';
+	if (is_negative)
+		extra_ch = '-';
+	else if (flags & FADD)
+		extra_ch = '+';
+	else if (flags & FSPACE)
+		extra_ch = ' ';
 
 	return (w_num(ind, buff, flags, width, precision,
-	    length, padd, extra_ch));
+				length, padd, extra_ch));
 }
 
 /**
@@ -87,7 +85,7 @@ int w_numb(int is_negative, int ind, char buff[],
  * Return: Number of printed chars.
  */
 int w_num(int ind, char buff[], int flags, int width, int prec,
-	int length, char padd, char extra_c)
+		int length, char padd, char extra_c)
 {
 	int i, padd_start = 1;
 
@@ -97,33 +95,33 @@ int w_num(int ind, char buff[], int flags, int width, int prec,
 		buff[ind] = padd = ' ';
 	if (prec > 0 && prec < length)
 		padd = ' ';
-    while (prec > length)
-	    buff[--ind] = '0', length++;
-    if (extra_c != 0)
-	    length++;
-    if (width > length)
+	while (prec > length)
+		buff[--ind] = '0', length++;
+	if (extra_c != 0)
+		length++;
+	if (width > length)
 	{
-        for (i = 1; i < width - length + 1; i++)
+		for (i = 1; i < width - length + 1; i++)
 			buff[i] = padd;
 		buff[i] = '\0';
-        if (flags & FSUB && padd == ' ')
+		if (flags & FSUB && padd == ' ')
 		{
-        if (extra_c)
-			buff[--ind] = extra_c;
-		    return (write(1, &buff[ind], length) + write(1, &buff[1], i - 1));
+			if (extra_c)
+				buff[--ind] = extra_c;
+			return (write(1, &buff[ind], length) + write(1, &buff[1], i - 1));
 		}
 		else if (!(flags & FSUB) && padd == ' ')
 		{
-		    if (extra_c)
-			buff[--ind] = extra_c;
-		    return (write(1, &buff[1], i - 1) + write(1, &buff[ind], length));
+			if (extra_c)
+				buff[--ind] = extra_c;
+			return (write(1, &buff[1], i - 1) + write(1, &buff[ind], length));
 		}
 		else if (!(flags & FSUB) && padd == '0')
 		{
-		    if (extra_c)
-			buff[--padd_start] = extra_c;
-		    return (write(1, &buff[padd_start], i - padd_start) +
-		    write(1, &buff[ind], length - (1 - padd_start)));
+			if (extra_c)
+				buff[--padd_start] = extra_c;
+			return (write(1, &buff[padd_start], i - padd_start) +
+					write(1, &buff[ind], length - (1 - padd_start)));
 		}
 	}
 	if (extra_c)
@@ -143,9 +141,8 @@ int w_num(int ind, char buff[], int flags, int width, int prec,
  *
  * Return: Number of written chars.
  */
-int w_u(int is_negative, int ind,
-	char buff[],
-	int flags, int width, int precision, int size)
+int w_u(int is_negative, int ind, char buff[],
+		int flags, int width, int precision, int size)
 {
 	int length = SIZE - ind - 1, i = 0;
 	char padd = ' ';
@@ -195,7 +192,7 @@ int w_u(int is_negative, int ind,
  * Return: Number of written chars.
  */
 int w_p(char buff[], int ind, int length,
-	int width, int flags, char padd, char extra_c, int padd_start)
+		int width, int flags, char padd, char extra_c, int padd_start)
 {
 	int i;
 
@@ -227,7 +224,7 @@ int w_p(char buff[], int ind, int length,
 			buff[1] = '0';
 			buff[2] = 'x';
 			return (write(1, &buff[padd_start], i - padd_start) +
-				write(1, &buff[ind], length - (1 - padd_start) - 2));
+					write(1, &buff[ind], length - (1 - padd_start) - 2));
 		}
 	}
 	buff[--ind] = 'x';
