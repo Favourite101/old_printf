@@ -59,9 +59,9 @@ int is_digit(char c)
  */
 long int con_szn(long int num, int size)
 {
-        if (size == S_LONG)
+        if (size == LONG)
                 return (num);
-        else if (size == S_SHORT)
+        else if (size == SHORT)
                 return ((short)num);
         return ((int)num);
 }
@@ -75,9 +75,9 @@ long int con_szn(long int num, int size)
  */
 long int con_szu(unsigned long int num, int size)
 {
-        if (size == S_LONG)
+        if (size == LONG)
                 return (num);
-        else if (size == S_SHORT)
+        else if (size == SHORT)
                 return ((unsigned short)num);
 
         return ((unsigned int)num);
