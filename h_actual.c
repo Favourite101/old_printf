@@ -12,7 +12,7 @@
  * Return: Number of chars printed.
  */
 int handler_char(char c, char buff[],
-	int flags, int width, int precision, int size)
+    int flags, int width, int precision, int size)
 {
 	int i = 0;
 	char padd = ' ';
