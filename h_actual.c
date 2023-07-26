@@ -58,15 +58,15 @@ int w_numb(int is_negative, int ind, char buff[],
 	char padd = ' ', extra_ch = 0;
 
 	NOTUSED(size);
-	if ((flags & FZERO) && !(flags & FSUB))
+    if ((flags & FZERO) && !(flags & FSUB))
     {
         padd = '0';
     }
     if (is_negative)
-	    extra_ch = '-';
-	else if (flags & FADD)
+        extra_ch = '-';
+    else if (flags & FADD)
 	    extra_ch = '+';
-	else if (flags & FSPACE)
+    else if (flags & FSPACE)
 	    extra_ch = ' ';
 
 	return (w_num(ind, buff, flags, width, precision,
@@ -97,18 +97,18 @@ int w_num(int ind, char buff[], int flags, int width, int prec,
 		buff[ind] = padd = ' ';
 	if (prec > 0 && prec < length)
 		padd = ' ';
-	while (prec > length)
+    while (prec > length)
 	    buff[--ind] = '0', length++;
-	if (extra_c != 0)
+    if (extra_c != 0)
 	    length++;
-	if (width > length)
+    if (width > length)
 	{
-	    for (i = 1; i < width - length + 1; i++)
+        for (i = 1; i < width - length + 1; i++)
 			buff[i] = padd;
 		buff[i] = '\0';
-		if (flags & FSUB && padd == ' ')
+        if (flags & FSUB && padd == ' ')
 		{
-		    if (extra_c)
+        if (extra_c)
 			buff[--ind] = extra_c;
 		    return (write(1, &buff[ind], length) + write(1, &buff[1], i - 1));
 		}
