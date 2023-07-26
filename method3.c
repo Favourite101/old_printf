@@ -15,7 +15,7 @@ int p_pointer(va_list types, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	char extra_c = 0, padd = ' ';
-	int ind = SIZE - 2, length = 2, padd_start = 1; /* length=2, for '0x' */
+	int ind = SIZE - 2, length = 2, padd_start = 1; 
 	unsigned long num_addrs;
 	char map_to[] = "0123456789abcdef";
 	void *addrs = va_arg(types, void *);
@@ -41,12 +41,12 @@ int p_pointer(va_list types, char buffer[],
 		extra_c = ' ', length++;
 	ind++;
 
-	/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
-	return (write_pointer(buffer, ind, length,
+	
+	return (w_p(buffer, ind, length,
 				width, flags, padd, extra_c, padd_start));
 }
 
-/************************* PRINT NON PRINTABLE *************************/
+
 /**
  * p_non_printable - Prints ascii codes in hexa of non printable chars
  * @types: Lista of arguments
@@ -72,7 +72,7 @@ int p_non_printable(va_list types, char buffer[],
 		return (write(1, "(null)", 6));
 	while (str[i] != '\0')
 	{
-		if (is_printable(str[i]))
+		if (can_print(str[i]))
 			buffer[i + offset] = str[i];
 		else
 			offset += append_hexa_code(str[i], buffer, i + offset);
