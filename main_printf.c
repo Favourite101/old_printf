@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			printbuff(buff, &buff_index);
+			printbuff(buff, &index);
 			precisions = precision(format, &i, list);
 			sizes = size(format, &i);
 			flag = flags(format, &i);
@@ -36,13 +36,13 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			buff[buff_index++] = format[i];
-			if (buff_index == SIZE)
-				printbuff(buff, &buff_index);
+			buff[index++] = format[i];
+			if (index == SIZE)
+				printbuff(buff, &index);
 			printedd++;
 		}
 	}
-	printbuff(buff, &buff_index);
+	printbuff(buff, &index);
 	va_end(list);
 
 	return (printedd);
