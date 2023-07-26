@@ -1,8 +1,7 @@
 #include "main.h"
 
-/****************** PRINT POINTER ******************/
 /**
- * print_pointer - Prints the value of a pointer variable
+ * p_pointer - Prints the value of a pointer variable
  * @types: List a of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
@@ -12,21 +11,21 @@
  *
  * Return: Number of chars printed.
  */
-int print_pointer(va_list types, char buffer[],
+int p_pointer(va_list types, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	char extra_c = 0, padd = ' ';
-	int ind = BUFF_SIZE - 2, length = 2, padd_start = 1; /* length=2, for '0x' */
+	int ind = SIZE - 2, length = 2, padd_start = 1; /* length=2, for '0x' */
 	unsigned long num_addrs;
 	char map_to[] = "0123456789abcdef";
 	void *addrs = va_arg(types, void *);
 
-	UNUSED(width);
-	UNUSED(size);
+	NOTUSED(width);
+	NOTUSED(size);
 	if (addrs == NULL)
 		return (write(1, "(nil)", 5));
-	buffer[BUFF_SIZE - 1] = '\0';
-	UNUSED(precision);
+	buffer[SIZE - 1] = '\0';
+	NOTUSED(precision);
 	num_addrs = (unsigned long)addrs;
 	while (num_addrs > 0)
 	{
@@ -34,11 +33,11 @@ int print_pointer(va_list types, char buffer[],
 		num_addrs /= 16;
 		length++;
 	}
-	if ((flags & F_ZERO) && !(flags & F_MINUS))
+	if ((flags & FZERO) && !(flags & FSUB))
 		padd = '0';
-	if (flags & F_PLUS)
+	if (flags & FADD)
 		extra_c = '+', length++;
-	else if (flags & F_SPACE)
+	else if (flags & FSPACE)
 		extra_c = ' ', length++;
 	ind++;
 
@@ -49,7 +48,7 @@ int print_pointer(va_list types, char buffer[],
 
 /************************* PRINT NON PRINTABLE *************************/
 /**
- * print_non_printable - Prints ascii codes in hexa of non printable chars
+ * p_non_printable - Prints ascii codes in hexa of non printable chars
  * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
@@ -59,16 +58,16 @@ int print_pointer(va_list types, char buffer[],
  *
  * Return: Number of chars printed
  */
-int print_non_printable(va_list types, char buffer[],
+int p_non_printable(va_list types, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	int i = 0, offset = 0;
 	char *str = va_arg(types, char *);
 
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(precision);
-	UNUSED(size);
+	NOTUSED(flags);
+	NOTUSED(width);
+	NOTUSED(precision);
+	NOTUSED(size);
 	if (str == NULL)
 		return (write(1, "(null)", 6));
 	while (str[i] != '\0')
@@ -84,9 +83,9 @@ int print_non_printable(va_list types, char buffer[],
 	return (write(1, buffer, i + offset));
 }
 
-/************************* PRINT REVERSE *************************/
+
 /**
- * print_reverse - Prints reverse strings
+ * p_reverse - Prints reverse strings
  * @types: Lists of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
@@ -97,20 +96,20 @@ int print_non_printable(va_list types, char buffer[],
  * Return: Numbers of chars printed
  */
 
-int print_reverse(va_list types, char buffer[],
+int p_reverse(va_list types, char buffer[],
 			int flags, int width, int precision, int size)
 {
 	char *str;
 	int i, count = 0;
 
-	UNUSED(buffer);
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(size);
+	NOTUSED(buffer);
+	NOTUSED(flags);
+	NOTUSED(width);
+	NOTUSED(size);
 	str = va_arg(types, char *);
 	if (str == NULL)
 	{
-		UNUSED(precision);
+		NOTUSED(precision);
 		str = ")Null(";
 	}
 	for (i = 0; str[i]; i++)
@@ -126,9 +125,8 @@ int print_reverse(va_list types, char buffer[],
 	return (count);
 }
 
-/************************* PRINT A STRING IN ROT13 *************************/
 /**
- * print_rot13string - Print a string in rot13.
+ * p_rot13string - Print a string in rot13.
  * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
@@ -138,7 +136,7 @@ int print_reverse(va_list types, char buffer[],
  *
  * Return: Numbers of chars printed
  */
-int print_rot13string(va_list types, char buffer[],
+int p_rot13string(va_list types, char buffer[],
 			int flags, int width, int precision, int size)
 {
 	char x;
@@ -149,11 +147,11 @@ int print_rot13string(va_list types, char buffer[],
 	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	str = va_arg(types, char *);
-	UNUSED(buffer);
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(precision);
-	UNUSED(size);
+	NOTUSED(buffer);
+	NOTUSED(flags);
+	NOTUSED(width);
+	NOTUSED(precision);
+	NOTUSED(size);
 	if (str == NULL)
 		str = "(AHYY)";
 	for (i = 0; str[i]; i++)
