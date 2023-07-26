@@ -58,10 +58,11 @@ int w_numb(int is_negative, int ind, char buff[],
 	char padd = ' ', extra_ch = 0;
 
 	NOTUSED(size);
-
 	if ((flags & FZERO) && !(flags & FSUB))
-		padd = '0';
-	if (is_negative)
+    {
+        padd = '0';
+    }
+    if (is_negative)
 	    extra_ch = '-';
 	else if (flags & FADD)
 	    extra_ch = '+';
