@@ -3,23 +3,14 @@
 
 
 /**
-
  * p_char - Prints a char
-
  * @types: Lists a of arguments
-
  * @buffer: Buffer array to handle print
-
  * @flags:  Calculates active flags
-
  * @width: Width
-
  * @precision: Precision specification
-
  * @size: Size specifier
-
  * Return: Number of chars printed
-
  */
 
 int print_char(va_list types, char buffer[],
@@ -36,23 +27,14 @@ int print_char(va_list types, char buffer[],
 
 
 /**
-
  * p_string - Prints a string
-
  * @types: List a of arguments
-
  * @buffer: Buffer array to handle print
-
  * @flags:  Calculates active flags
-
  * @width: get width.
-
  * @precision: Precision specification
-
  * @size: Size specifier
-
  * Return: Number of chars printed
-
  */
 
 int p_string(va_list types, char buffer[],
@@ -136,23 +118,14 @@ int p_string(va_list types, char buffer[],
 
 
 /**
-
  * p_percent - Prints a percent sign
-
  * @types: Lists of arguments
-
  * @buffer: Buffer array to handle print
-
  * @flags:  Calculates active flags
-
  * @width: get width.
-
  * @precision: Precision specification
-
  * @size: Size specifier
-
  * Return: Number of chars printed
-
  */
 
 int p_percent(va_list types, char buffer[],
@@ -179,23 +152,14 @@ int p_percent(va_list types, char buffer[],
 
 
 /**
-
  * p_int - Print int
-
  * @types: Lists of arguments
-
  * @buffer: Buffer array to handle print
-
  * @flags:  Calculates active flags
-
  * @width: get width.
-
  * @precision: Precision specification
-
  * @size: Size specifier
-
  * Return: Number of chars printed
-
  */
 
 int p_int(va_list types, char buffer[],
@@ -250,23 +214,14 @@ int p_int(va_list types, char buffer[],
 
 
 /**
-
  * p_binary - Prints an unsigned number
-
  * @types: Lists of arguments
-
  * @buffer: Buffer array to handle print
-
  * @flags:  Calculates active flags
-
  * @width: get width.
-
  * @precision: Precision specification
-
  * @size: Size specifier
-
  * Return: Numbers of char printed.
-
  */
 
 int p_binary(va_list types, char buffer[],

@@ -25,7 +25,7 @@
 struct ft
 {
     char ft;
-    int (*func)(va_list, char[], int, int, int, int);
+    int (*fn)(va_list, char[], int, int, int, int);
 };
 
 /**
@@ -33,7 +33,7 @@ struct ft
  * @ft: format
  * @ft_t: function
  */
-typedef struct format ft_t;
+typedef struct ft ft_t;
 
 int _printf(const char *format, ...);
 int handler(const char *ft, int *i,
