@@ -8,10 +8,10 @@
  */
 int can_print(char ca)
 {
-        if (ca >= 32 && ca < 127)
-                return (1);
+	if (ca >= 32 && ca < 127)
+		return (1);
 
-        return (0);
+	return (0);
 }
 
 /**
@@ -24,18 +24,17 @@ int can_print(char ca)
  */
 int append_hexa_code(char ascii, char buff[], int i)
 {
-        char inc[] = "0123456789ABCDEF";
+	char inc[] = "0123456789ABCDEF";
 
-        if (ascii < 0)
-                ascii *= -1;
-        buff[i++] = '\\';
-        buff[i++] = 'x';
-        buff[i++] = inc[ascii / 16];
-        buff[i] = inc[ascii % 16];
+	if (ascii < 0)
+		ascii *= -1;
+	buff[i++] = '\\';
+	buff[i++] = 'x';
+	buff[i++] = inc[ascii / 16];
+	buff[i] = inc[ascii % 16];
 
-        return (3);
+	return (3);
 }
-
 /**
  * is_digit - Verifies if a char is a digit
  * @c: char
@@ -44,10 +43,9 @@ int append_hexa_code(char ascii, char buff[], int i)
  */
 int is_digit(char c)
 {
-        if (c >= '0' && c <= '9')
-                return (1);
-
-        return (0);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
 /**
@@ -59,11 +57,11 @@ int is_digit(char c)
  */
 long int con_szn(long int num, int size)
 {
-        if (size == LONG)
-                return (num);
-        else if (size == SHORT)
-                return ((short)num);
-        return ((int)num);
+	if (size == LONG)
+		return (num);
+	else if (size == SHORT)
+		return ((short)num);
+	return ((int)num);
 }
 
 /**
@@ -75,10 +73,10 @@ long int con_szn(long int num, int size)
  */
 long int con_szu(unsigned long int num, int size)
 {
-        if (size == LONG)
-                return (num);
-        else if (size == SHORT)
-                return ((unsigned short)num);
+	if (size == LONG)
+		return (num);
+	else if (size == SHORT)
+		return ((unsigned short)num);
 
-        return ((unsigned int)num);
+	return ((unsigned int)num);
 }

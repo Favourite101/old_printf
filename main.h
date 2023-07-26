@@ -1,12 +1,13 @@
 #ifndef MAIN_H
 #define MAIN_H
-#define SIZE 1024
 
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
 
 #define NOTUSED(x) (void)(x)
+#define SIZE 1024
+
 
 #define FSUB 1
 #define FADD 2
@@ -20,12 +21,12 @@
 /**
  * struct ft - struct
  * @ft: format
- * @func: function
+ * @fn: function
  */
 struct ft
 {
-    char ft;
-    int (*fn)(va_list, char[], int, int, int, int);
+	char ft;
+	int (*fn)(va_list, char[], int, int, int, int);
 };
 
 /**
@@ -40,31 +41,31 @@ int handler(const char *ft, int *i,
 va_list list, char buff[], int flags, int width, int precision, int size);
 
 int p_char(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int p_string(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int p_percent(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 
 int p_int(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int p_binary(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int p_unsigned(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int p_octal(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int p_hexadecimal(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int p_hexa_upper(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int p_hexa(va_list types, char map_to[],
 char buff[], int flags, char flag_ch, int width, int precision, int size);
 
 int p_non_printable(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int p_pointer(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 
 int flags(const char *format, int *i);
 int width(const char *format, int *i, va_list list);
@@ -72,21 +73,21 @@ int precision(const char *format, int *i, va_list list);
 int size(const char *format, int *i);
 
 int p_reverse(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int p_rot13string(va_list types, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 
 int handler_char(char c, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int w_numb(int is_positive, int ind, char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 int w_num(int ind, char bff[], int flags, int width, int precision,
-        int length, char padd, char extra_c);
+	int length, char padd, char extra_c);
 int w_p(char buff[], int ind, int length,
-        int width, int flags, char padd, char extra_c, int padd_start);
+	int width, int flags, char padd, char extra_c, int padd_start);
 int w_u(int is_negative, int ind,
 char buff[],
-        int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 
 int can_print(char);
 int append_hexa_code(char, char[], int);
