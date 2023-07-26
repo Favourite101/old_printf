@@ -11,7 +11,7 @@
  *
  * Return: Number of chars printed.
  */
-int handle_write_char(char c, char buff[],
+int handler_char(char c, char buff[],
         int flags, int width, int precision, int size)
 {
         int i = 0;
@@ -49,7 +49,7 @@ int handle_write_char(char c, char buff[],
  *
  * Return: Number of chars printed.
  */
-int write_number(int is_negative, int ind, char buff[],
+int w_numb(int is_negative, int ind, char buff[],
         int flags, int width, int precision, int size)
 {
         int length = SIZE - ind - 1;
@@ -65,7 +65,7 @@ int write_number(int is_negative, int ind, char buff[],
         else if (flags & FSPACE)
             extra_ch = ' ';
 
-        return (write_num(ind, buff, flags, width, precision,
+        return (w_num(ind, buff, flags, width, precision,
             length, padd, extra_ch));
 }
 
@@ -82,7 +82,7 @@ int write_number(int is_negative, int ind, char buff[],
  *
  * Return: Number of printed chars.
  */
-int write_num(int ind, char buff[],
+int w_num(int ind, char buff[],
         int flags, int width, int prec,
         int length, char padd, char extra_c)
 {
@@ -100,7 +100,9 @@ int write_num(int ind, char buff[],
         if (width > length)
         {
             for (i = 1; i < width - length + 1; i++)
-                buff[i] = padd;
+            {
+                 buff[i] = padd;
+            }                           
                 buff[i] = '\0';
                 if (flags & FSUB && padd == ' ')
                 {
@@ -140,7 +142,7 @@ int write_num(int ind, char buff[],
  *
  * Return: Number of written chars.
  */
-int write_unsgnd(int is_negative, int ind,
+int w_u(int is_negative, int ind,
         char buff[],
         int flags, int width, int precision, int size)
 {
@@ -191,7 +193,7 @@ int write_unsgnd(int is_negative, int ind,
  *
  * Return: Number of written chars.
  */
-int write_pointer(char buff[], int ind, int length,
+int w_p(char buff[], int ind, int length,
         int width, int flags, char padd, char extra_c, int padd_start)
 {
         int i;

@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			flag = flags(format, &i);
 			widths = width(format, &i, list);
 			i++;
-			count = handler(format, &i, list, buff, flags, width, precision, size);
+			count = handler(format, &i, list, buff, flag, widths, precisions, sizes);
 			if (count == -1)
 				return (-1);
 			printedd += count;
